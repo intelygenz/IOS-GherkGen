@@ -2,13 +2,11 @@ import Foundation
 
 
 class ArgumentsProcessor {
-    private let currentPath: String
+    private var currentPath: String { FileManager.default.currentDirectoryPath }
     let map: [String: [String]]
     
     init(_ arguments: [String]) {
-        var args = arguments
-        self.currentPath = args.removeFirst()
-        self.map = ArgumentsProcessor.toMap(args)
+        self.map = ArgumentsProcessor.toMap(Array(arguments.dropFirst()))
     }
     
     func getBool(_ command: Command) -> Bool { command.tags.first(where: { map.keys.contains($0) } ) != nil }
