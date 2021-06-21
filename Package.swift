@@ -5,8 +5,11 @@ import PackageDescription
 
 let package = Package(
     name: "GherkGen",
+    products: [
+        .executable(name: "GherkGen", targets: ["GherkGen"])
+    ],
     dependencies: [
-        .package(path: "../GherkParser")
+        .package(name: "GherkParser", url: "https://github.com/intelygenz/IOS-GherkParser", from: "0.5.0")
     ],
     targets: [
         .target(
